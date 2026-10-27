@@ -9,7 +9,7 @@ for (const key of required) for (const item of catalog) if (item[key] === undefi
 for (const item of catalog) {
   if (!/^https:\/\//.test(item.url) || !/^https:\/\//.test(item.neetcodeUrl)) errors.push(`${item.id} has an invalid URL`);
   if (!Array.isArray(item.hints) || item.hints.length !== 3 || new Set(item.hints).size !== 3) errors.push(`${item.id} needs three distinct hints`);
-  if (!item.solutionCode.includes('#include') || !/class (Solution|Trie|WordDictionary|MedianFinder|Codec|Twitter|TimeMap|LRUCache|DetectSquares)/.test(item.solutionCode)) errors.push(`${item.id} solution is incomplete`);
+  if (!item.solutionCode.includes('#include') || !/class (Solution|Trie|WordDictionary|MedianFinder|Codec|Twitter|TimeMap|MinStack|KthLargest|LRUCache|DetectSquares)/.test(item.solutionCode)) errors.push(`${item.id} solution is incomplete`);
 }
 for (const field of ['id','title','url']) if (new Set(catalog.map(x => x[field])).size !== 150) errors.push(`${field} values are not unique`);
 const topics = [...new Set(catalog.map(x => x.topic))];
