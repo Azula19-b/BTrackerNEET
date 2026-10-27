@@ -70,6 +70,11 @@ describe('learning workflow', () => {
     expect(attempts.filter(item => !item.is_draft)).toHaveLength(2);
   });
 
+  it('persists personal notes for built-in problems', () => {
+    repository.updateNotes(id, 'Use a set and explain the invariant.');
+    expect(repository.getProblem(id).personal_notes).toContain('invariant');
+  });
+
   it('records review completion and computes updated analytics', () => {
     repository.completeReview(id, { understanding: 'full', solvingProgress: 'solved', notes: 'Recalled independently.' });
     const analytics = repository.getAnalytics();

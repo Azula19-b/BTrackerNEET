@@ -11,6 +11,7 @@ contextBridge.exposeInMainWorld('btracker', {
     delete: (id) => ipcRenderer.invoke('problems:delete', id),
   },
   progress: { update: (id, input) => ipcRenderer.invoke('progress:update', id, input) },
+  notes: { update: (id, notes) => ipcRenderer.invoke('notes:update', id, notes) },
   sessions: { start: (id) => ipcRenderer.invoke('sessions:start', id), end: (id) => ipcRenderer.invoke('sessions:end', id) },
   attempts: {
     list: (id) => ipcRenderer.invoke('attempts:list', id),

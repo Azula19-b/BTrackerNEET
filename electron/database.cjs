@@ -203,6 +203,12 @@ function makeRepository(db) {
       if (changes.understanding) this.scheduleReview(problemId, null, false, understanding);
       return this.getProblem(problemId);
     },
+    updateNotes(problemId, notes) {
+      if (typeof notes !== 'string' || notes.length > 100000) throw new Error('Invalid notes');
+      const result = db.prepare('UPDATE problems SET personal_notes=?,updated_at=? WHERE id=?').run(notes, now(), problemId);
+      if (!result.changes) throw new Error('Problem not found');
+      return { savedAt: now() };
+    },
     startSession(problemId) {
       const sessionId = id('session');
       db.prepare('INSERT INTO practice_sessions(id,problem_id,started_at) VALUES (?,?,?)').run(sessionId, problemId, now());

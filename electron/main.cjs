@@ -14,6 +14,7 @@ const handlers = {
   'problems:update': (_, problemId, input) => repository.updateCustomProblem(problemId, input),
   'problems:delete': (_, problemId) => repository.deleteCustomProblem(problemId),
   'progress:update': (_, problemId, input) => repository.updateProgress(problemId, input),
+  'notes:update': (_, problemId, notes) => repository.updateNotes(problemId, notes),
   'sessions:start': (_, problemId) => repository.startSession(problemId),
   'sessions:end': (_, sessionId) => repository.endSession(sessionId),
   'attempts:list': (_, problemId) => repository.getAttempts(problemId),
