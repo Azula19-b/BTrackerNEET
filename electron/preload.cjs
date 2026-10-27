@@ -24,5 +24,6 @@ contextBridge.exposeInMainWorld('btracker', {
     complete: (id, input) => ipcRenderer.invoke('reviews:complete', id, input),
   },
   analytics: { get: () => ipcRenderer.invoke('analytics:get') },
+  runner: { execute: (input) => ipcRenderer.invoke('runner:execute', input), cancel: (sessionId) => ipcRenderer.invoke('runner:cancel', sessionId) },
   backup: { export: () => ipcRenderer.invoke('backup:export'), import: () => ipcRenderer.invoke('backup:import') },
 });

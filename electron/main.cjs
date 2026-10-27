@@ -2,6 +2,7 @@ const { app, BrowserWindow, shell, ipcMain, dialog } = require('electron');
 const path = require('node:path');
 const fs = require('node:fs');
 const { createDatabase, loadCatalog } = require('./database.cjs');
+const { compileAndRun, cancelRun } = require('./runner.cjs');
 
 let mainWindow;
 let repository;
@@ -24,6 +25,8 @@ const handlers = {
   'reviews:schedule': (_, problemId, date) => repository.scheduleReview(problemId, date, true),
   'reviews:complete': (_, problemId, input) => repository.completeReview(problemId, input),
   'analytics:get': () => repository.getAnalytics(),
+  'runner:execute': (_, input) => compileAndRun(input),
+  'runner:cancel': (_, sessionId) => cancelRun(sessionId),
   'backup:export': async () => {
     const { canceled, filePath } = await dialog.showSaveDialog({ defaultPath: 'BTrackerNEET-backup.json', filters: [{ name: 'JSON', extensions: ['json'] }] });
     if (canceled) return null;
