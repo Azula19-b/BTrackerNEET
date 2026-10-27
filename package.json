@@ -22,6 +22,7 @@
     "monaco-editor": "^0.54.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
+    "react-is": "^19.3.1",
     "recharts": "^3.3.0"
   },
   "devDependencies": {
@@ -39,9 +40,25 @@
     "appId": "com.btrackerneet.app",
     "productName": "BTrackerNEET",
     "asar": true,
-    "directories": { "output": "release" },
-    "files": ["dist/**/*", "electron/**/*", "data/**/*", "package.json"],
-    "mac": { "category": "public.app-category.education", "target": ["dmg", "zip"], "artifactName": "${productName}-${version}-${arch}.${ext}" },
-    "dmg": { "title": "BTrackerNEET ${version}" }
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "data/**/*",
+      "package.json"
+    ],
+    "mac": {
+      "category": "public.app-category.education",
+      "target": [
+        "dmg",
+        "zip"
+      ],
+      "artifactName": "${productName}-${version}-${arch}.${ext}"
+    },
+    "dmg": {
+      "title": "BTrackerNEET ${version}"
+    }
   }
 }
