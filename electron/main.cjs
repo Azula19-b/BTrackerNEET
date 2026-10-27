@@ -1,7 +1,40 @@
-const { app, BrowserWindow, shell } = require('electron');
+const { app, BrowserWindow, shell, ipcMain, dialog } = require('electron');
 const path = require('node:path');
+const fs = require('node:fs');
+const { createDatabase, loadCatalog } = require('./database.cjs');
 
 let mainWindow;
+let repository;
+
+const handlers = {
+  'problems:list': (_, filters) => repository.listProblems(filters),
+  'problems:get': (_, problemId) => repository.getProblem(problemId),
+  'problems:add': (_, input) => repository.addCustomProblem(input),
+  'problems:update': (_, problemId, input) => repository.updateCustomProblem(problemId, input),
+  'problems:delete': (_, problemId) => repository.deleteCustomProblem(problemId),
+  'progress:update': (_, problemId, input) => repository.updateProgress(problemId, input),
+  'sessions:start': (_, problemId) => repository.startSession(problemId),
+  'sessions:end': (_, sessionId) => repository.endSession(sessionId),
+  'attempts:list': (_, problemId) => repository.getAttempts(problemId),
+  'attempts:draft': (_, problemId, code, sessionId) => repository.saveDraft(problemId, code, sessionId),
+  'attempts:save': (_, problemId, code, sessionId) => repository.saveAttempt(problemId, code, sessionId),
+  'hints:view': (_, problemId, hintNumber, sessionId) => repository.viewHint(problemId, hintNumber, sessionId),
+  'solution:reveal': (_, problemId, sessionId) => repository.revealSolution(problemId, sessionId),
+  'reviews:list': () => repository.getReviews(),
+  'reviews:schedule': (_, problemId, date) => repository.scheduleReview(problemId, date, true),
+  'reviews:complete': (_, problemId, input) => repository.completeReview(problemId, input),
+  'analytics:get': () => repository.getAnalytics(),
+  'backup:export': async () => {
+    const { canceled, filePath } = await dialog.showSaveDialog({ defaultPath: 'BTrackerNEET-backup.json', filters: [{ name: 'JSON', extensions: ['json'] }] });
+    if (canceled) return null;
+    fs.writeFileSync(filePath, JSON.stringify(repository.exportData(), null, 2)); return filePath;
+  },
+  'backup:import': async () => {
+    const { canceled, filePaths } = await dialog.showOpenDialog({ properties: ['openFile'], filters: [{ name: 'JSON', extensions: ['json'] }] });
+    if (canceled) return null;
+    repository.importData(JSON.parse(fs.readFileSync(filePaths[0], 'utf8'))); return filePaths[0];
+  },
+};
 
 function createWindow() {
   mainWindow = new BrowserWindow({
@@ -29,6 +62,11 @@ function createWindow() {
   });
 }
 
-app.whenReady().then(createWindow);
+app.whenReady().then(() => {
+  repository = createDatabase(path.join(app.getPath('userData'), 'btrackerneet.db'), loadCatalog());
+  for (const [channel, handler] of Object.entries(handlers)) ipcMain.handle(channel, handler);
+  createWindow();
+});
 app.on('window-all-closed', () => { if (process.platform !== 'darwin') app.quit(); });
 app.on('activate', () => { if (BrowserWindow.getAllWindows().length === 0) createWindow(); });
+app.on('before-quit', () => repository?.close());
