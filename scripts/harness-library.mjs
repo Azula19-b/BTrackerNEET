@@ -107,6 +107,7 @@ template<class T> string btShow(const optional<T>& value) { return value ? btSho
 template<class T> string btShow(const vector<T>& values) { string out="["; for(size_t i=0;i<values.size();++i){if(i)out+=",";out+=btShow(values[i]);}return out+"]"; }
 template<class T> bool btEqual(const T& actual,const T& expected){ if constexpr (is_floating_point_v<T>) return abs(actual-expected)<=1e-6*max(1.0,abs((double)expected)); else return actual==expected; }
 template<class T> bool btEqual(const vector<T>& actual,const vector<T>& expected){return actual==expected;}
+string btJsonArray(const vector<string>& values){string out="[";for(size_t i=0;i<values.size();++i){if(i)out+=",";out+=values[i];}return out+"]";}
 `;
 
 const listPrelude = `
@@ -198,9 +199,94 @@ function buildFunctionHarness(problem) {
   return { harness: `${standardIncludes}\nusing namespace std;\n${prelude}\n{{USER_CODE}}\nint main(){int passed=0;${blocks.join('\n')}cout<<"__BT_SUMMARY__|"<<passed<<"|${blocks.length}\\n";return passed==${blocks.length}?0:3;}\n`, tests };
 }
 
+const designConfigs = {
+  22: { className: 'MinStack', constructor: [], methods: { push: { args: ['int'] }, pop: { args: [] }, top: { args: [], returns: 'int' }, getMin: { args: [], returns: 'int' } } },
+  32: { className: 'TimeMap', constructor: [], methods: { set: { args: ['string', 'string', 'int'] }, get: { args: ['string', 'int'], returns: 'string' } } },
+  42: { className: 'LRUCache', constructor: ['int'], methods: { put: { args: ['int', 'int'] }, get: { args: ['int'], returns: 'int' } } },
+  60: { className: 'KthLargest', constructor: ['int', 'vector<int>'], methods: { add: { args: ['int'], returns: 'int' } } },
+  65: { className: 'Twitter', constructor: [], methods: { postTweet: { args: ['int', 'int'] }, getNewsFeed: { args: ['int'], returns: 'vector<int>' }, follow: { args: ['int', 'int'] }, unfollow: { args: ['int', 'int'] } } },
+  66: { className: 'MedianFinder', constructor: [], methods: { addNum: { args: ['int'] }, findMedian: { args: [], returns: 'double' } } },
+  77: { className: 'PrefixTree', constructor: [], methods: { insert: { args: ['string'] }, search: { args: ['string'], returns: 'bool' }, startsWith: { args: ['string'], returns: 'bool' } } },
+  78: { className: 'WordDictionary', constructor: [], methods: { addWord: { args: ['string'] }, search: { args: ['string'], returns: 'bool' } } },
+  143: { className: 'CountSquares', constructor: [], methods: { add: { args: ['vector<int>'] }, count: { args: ['vector<int>'], returns: 'int' } } },
+};
+
+function normalizedArguments(raw, types) {
+  if (!types.length) return [];
+  if (types.length === 1) {
+    if (Array.isArray(raw) && raw.length === 1) return [raw[0]];
+    return [raw];
+  }
+  return raw;
+}
+
+function parseDesignOperations(problem, config) {
+  if (problem.position === 78) {
+    const [operations, argumentsList] = problem.sampleInputs[0].split('\n').map(JSON.parse);
+    return operations.map((name, index) => ({ name, args: argumentsList[index] }));
+  }
+  const sequence = JSON.parse(problem.sampleInputs[0]);
+  const operations = [{ name: sequence[0], args: [] }];
+  let cursor = 1;
+  if (config.constructor.length) operations[0].args = sequence[cursor++];
+  while (cursor < sequence.length) {
+    const name = sequence[cursor++];
+    const method = config.methods[name];
+    if (!method) throw new Error(`${problem.title}: unknown operation ${name}`);
+    operations.push({ name, args: method.args.length ? sequence[cursor++] : [] });
+  }
+  return operations;
+}
+
+function buildDesignHarness(problem) {
+  if (problem.position === 59) {
+    const blocks = problem.sampleInputs.map((input, index) => {
+      const root = parseAssignments(input).root;
+      const expected = parseExpected(problem.examples[index].output);
+      return `{TreeNode* root=btBuildTree(${literal(root,'vector<optional<int>>')});Codec codec;TreeNode* actual=codec.deserialize(codec.serialize(root));auto actualValue=btTreeValues(actual);vector<optional<int>> expectedValue=${literal(expected,'vector<optional<int>>')};bool ok=btEqual(actualValue,expectedValue);passed+=ok;cout<<"__BT_CASE__|${index + 1}|"<<(ok?"PASS":"FAIL")<<"|"<<btShow(actualValue)<<"|"<<btShow(expectedValue)<<"\\n";}`;
+    });
+    return {
+      harness: `${standardIncludes}\nusing namespace std;\n${commonPrelude}${treePrelude}\n{{USER_CODE}}\nint main(){int passed=0;${blocks.join('\n')}cout<<"__BT_SUMMARY__|"<<passed<<"|${blocks.length}\\n";return passed==${blocks.length}?0:3;}\n`,
+      tests: problem.sampleInputs.map((input, index) => ({ kind: 'sample', input, expected: problem.examples[index].output })),
+    };
+  }
+  const config = designConfigs[problem.position];
+  if (!config) throw new Error('Stateful design harness requires an operation-sequence adapter.');
+  const operations = parseDesignOperations(problem, config);
+  let expected = parseExpected(problem.examples[0].output);
+  if (problem.position === 66) expected = [null, null, 1, null, 1.5, null, 2];
+  const constructor = operations[0];
+  const constructorValues = normalizedArguments(constructor.args, config.constructor);
+  const constructorDeclarations = [];
+  const constructorArgs = config.constructor.map((type, index) => {
+    if (baseType(type).startsWith('vector<')) {
+      constructorDeclarations.push(`${type} constructorArg${index}=${literal(constructorValues[index], type)};`);
+      return `constructorArg${index}`;
+    }
+    return literal(constructorValues[index], type);
+  }).join(', ');
+  const statements = [...constructorDeclarations, `${config.className} subject{${constructorArgs}};`, 'vector<string> actualOut={"null"};', 'bool ok=true;'];
+  for (let index = 1; index < operations.length; index++) {
+    const operation = operations[index];
+    const method = config.methods[operation.name];
+    const values = normalizedArguments(operation.args, method.args);
+    const args = method.args.map((type, argumentIndex) => literal(values[argumentIndex], type)).join(', ');
+    if (!method.returns) statements.push(`subject.${operation.name}(${args});actualOut.push_back("null");`);
+    else {
+      const expectedValue = expected[index];
+      statements.push(`auto value${index}=subject.${operation.name}(${args});${method.returns} expected${index}=${literal(expectedValue, method.returns)};ok=ok&&btEqual(value${index},expected${index});actualOut.push_back(btShow(value${index}));`);
+    }
+  }
+  const expectedDisplay = JSON.stringify(expected);
+  const block = `{${statements.join('')}passed+=ok;cout<<"__BT_CASE__|1|"<<(ok?"PASS":"FAIL")<<"|"<<btJsonArray(actualOut)<<"|"<<${quoteString(expectedDisplay)}<<"\\n";}`;
+  return {
+    harness: `${standardIncludes}\nusing namespace std;\n${commonPrelude}\n{{USER_CODE}}\nint main(){int passed=0;${block}cout<<"__BT_SUMMARY__|"<<passed<<"|1\\n";return passed==1?0:3;}\n`,
+    tests: [{ kind: 'sample', input: problem.sampleInputs[0], expected: expectedDisplay }],
+  };
+}
+
 export function buildHarness(problem) {
   const isDesign = !problem.contract.returnType || problem.contract.functionName === problem.contract.className;
-  if (isDesign) return { harness: '', tests: [], unsupportedReason: 'Stateful design harness requires an operation-sequence adapter.' };
-  try { return buildFunctionHarness(problem); }
+  try { return isDesign ? buildDesignHarness(problem) : buildFunctionHarness(problem); }
   catch (error) { return { harness: '', tests: [], unsupportedReason: error.message }; }
 }

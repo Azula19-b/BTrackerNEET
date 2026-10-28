@@ -1,9 +1,8 @@
 {
-  "generatedAt": "2026-10-28T16:45:00.958Z",
+  "generatedAt": "2026-10-28T16:47:27.579Z",
   "compiler": "clang++ -std=c++23",
   "summary": {
-    "passed": 140,
-    "unsupported": 10
+    "passed": 150
   },
   "results": [
     {
@@ -135,8 +134,8 @@
     {
       "position": 22,
       "title": "Min Stack",
-      "status": "unsupported",
-      "detail": "Stateful design harness requires an operation-sequence adapter."
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|[null,null,null,null,0,null,2,1]|[null,null,null,null,0,null,2,1]\n__BT_SUMMARY__|1|1"
     },
     {
       "position": 23,
@@ -195,8 +194,8 @@
     {
       "position": 32,
       "title": "Time Based Key-Value Store",
-      "status": "unsupported",
-      "detail": "Stateful design harness requires an operation-sequence adapter."
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|[null,null,\"happy\",\"happy\",null,\"sad\"]|[null,null,\"happy\",\"happy\",null,\"sad\"]\n__BT_SUMMARY__|1|1"
     },
     {
       "position": 33,
@@ -255,8 +254,8 @@
     {
       "position": 42,
       "title": "LRU Cache",
-      "status": "unsupported",
-      "detail": "Stateful design harness requires an operation-sequence adapter."
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|[null,null,10,null,null,20,-1]|[null,null,10,null,null,20,-1]\n__BT_SUMMARY__|1|1"
     },
     {
       "position": 43,
@@ -357,14 +356,14 @@
     {
       "position": 59,
       "title": "Serialize and Deserialize Binary Tree",
-      "status": "unsupported",
-      "detail": "Stateful design harness requires an operation-sequence adapter."
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|[1,2,3,null,null,4,5]|[1,2,3,null,null,4,5]\n__BT_CASE__|2|PASS|[]|[]\n__BT_SUMMARY__|2|2"
     },
     {
       "position": 60,
       "title": "Kth Largest Element in a Stream",
-      "status": "unsupported",
-      "detail": "Stateful design harness requires an operation-sequence adapter."
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|[null,3,3,3,5,6]|[null,3,3,3,5,6]\n__BT_SUMMARY__|1|1"
     },
     {
       "position": 61,
@@ -393,14 +392,14 @@
     {
       "position": 65,
       "title": "Design Twitter",
-      "status": "unsupported",
-      "detail": "Stateful design harness requires an operation-sequence adapter."
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|[null,null,null,[10],[20],null,[20,10],[20],null,[10]]|[null,null,null,[10],[20],null,[20,10],[20],null,[10]]\n__BT_SUMMARY__|1|1"
     },
     {
       "position": 66,
       "title": "Find Median From Data Stream",
-      "status": "unsupported",
-      "detail": "Stateful design harness requires an operation-sequence adapter."
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|[null,null,1,null,1.5,null,2]|[null,null,1,null,1.5,null,2]\n__BT_SUMMARY__|1|1"
     },
     {
       "position": 67,
@@ -465,14 +464,14 @@
     {
       "position": 77,
       "title": "Implement Trie (Prefix Tree)",
-      "status": "unsupported",
-      "detail": "Stateful design harness requires an operation-sequence adapter."
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|[null,null,true,false,true,null,true]|[null,null,true,false,true,null,true]\n__BT_SUMMARY__|1|1"
     },
     {
       "position": 78,
       "title": "Design Add and Search Word Data Structure",
-      "status": "unsupported",
-      "detail": "Stateful design harness requires an operation-sequence adapter."
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|[null,null,null,null,false,true,true,true]|[null,null,null,null,false,true,true,true]\n__BT_SUMMARY__|1|1"
     },
     {
       "position": 79,
@@ -861,8 +860,8 @@
     {
       "position": 143,
       "title": "Detect Squares",
-      "status": "unsupported",
-      "detail": "Stateful design harness requires an operation-sequence adapter."
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|[null,null,null,null,1,0,null,2]|[null,null,null,null,1,0,null,2]\n__BT_SUMMARY__|1|1"
     },
     {
       "position": 144,
