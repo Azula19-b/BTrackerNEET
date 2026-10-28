@@ -9,3 +9,4 @@ coverage/
 *.db-wal
 .vite/
 backups/
+.content-cache/

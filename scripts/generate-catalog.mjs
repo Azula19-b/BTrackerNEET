@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import { solutionFor, complexityFor, conceptsFor } from './solution-library.mjs';
 
 const source = JSON.parse(fs.readFileSync(new URL('./neetcode150-source.json', import.meta.url)));
+const verified = JSON.parse(fs.readFileSync(new URL('./verified-content-source.json', import.meta.url)));
 
 const topicGuidance = {
   'Arrays & Hashing': ['Track the information that must be retrieved quickly.', 'Choose a hash set, hash map, or indexed frequency table so each lookup is cheap.', 'In C++, prefer unordered_map or unordered_set and check before inserting when order is irrelevant.'],
@@ -41,22 +42,23 @@ for (const [topic, problems] of Object.entries(source)) {
     position += 1;
     const solution = solutionFor(title, topic);
     const guidance = topicGuidance[topic];
+    const facts = verified[`nc150-${String(position).padStart(3, '0')}-${slug(title)}`];
+    if (!facts) throw new Error(`Verified content is missing for ${title}`);
     catalog.push({
       id: `nc150-${String(position).padStart(3, '0')}-${slug(title)}`,
       position,
-      title,
+      title: facts.title,
       topic,
       difficulty: meta.difficulty,
       url: meta.url,
       neetcodeUrl: meta.nurl,
-      summary: `Practice ${title} by identifying the essential ${topic.toLowerCase()} state, preserving the problem's constraints, and returning the requested result. Follow the source link for the complete statement and edge-case limits.`,
-      examples: [{ input: 'See the linked official problem for its current sample input.', output: 'Use the linked sample output to check your reasoning.' }],
-      starterCode: starterFor(title, solution),
-      hints: [
-        `${guidance[0]} For ${title}, first name exactly what must remain true after each step.`,
-        `${guidance[1]} Apply that pattern specifically to the values or nodes described by ${title}.`,
-        `${guidance[2]} Test the implementation on the smallest input, a typical input, and one boundary case.`,
-      ],
+      summary: facts.description,
+      examples: facts.examples,
+      constraints: facts.constraints,
+      starterCode: facts.starterCode,
+      hints: facts.hints,
+      contract: facts.contract,
+      sampleInputs: facts.sampleInputs,
       solutionCode: solution,
       explanation: `${title} is a ${meta.difficulty.toLowerCase()} ${topic} exercise. The key is to represent only the state needed for the next decision. ${guidance[1]} This avoids recomputing earlier work and makes the invariant visible in the code.`,
       walkthrough: `Read the helper and main method from top to bottom. Initialization establishes the base case. Each loop or recursive call advances one valid state, and the return statement converts the maintained state into the required answer. Pay special attention to empty input and boundary indices.`,
