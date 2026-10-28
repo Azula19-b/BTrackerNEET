@@ -4,6 +4,7 @@ const os = require('node:os');
 const path = require('node:path');
 
 const running = new Map();
+const cppStandard = 'c++23';
 
 function capture(child, timeoutMs, sessionId) {
   return new Promise(resolve => {
@@ -25,7 +26,9 @@ async function compileAndRun({ code, input = '', sessionId }) {
   fs.writeFileSync(source, code, { mode: 0o600 });
   const started = process.hrtime.bigint();
   try {
-    const compiled = await capture(spawn('clang++', ['-std=c++17', '-O2', '-Wall', '-Wextra', source, '-o', binary], { shell: false, cwd: directory }), 15000, sessionId);
+    const compiled = await capture(spawn('clang++', [`-std=${cppStandard}`, '-O2', '-Wall', '-Wextra', source, '-o', binary], { shell: false, cwd: directory }), 15000, sessionId);
+    if (compiled.code === -1) compiled.stderr = `A compatible C++23 compiler was not found. Install Apple Command Line Tools with “xcode-select --install”, or make a C++23-capable clang++ available on PATH.\n\n${compiled.stderr}`;
+    else if (/invalid value|unknown argument|unsupported option/i.test(compiled.stderr)) compiled.stderr = `The selected clang++ does not support -std=c++23. Install or select a newer Apple Clang compiler.\n\n${compiled.stderr}`;
     if (compiled.code !== 0) return { phase: 'compile', ...compiled, elapsedMs: Number(process.hrtime.bigint() - started) / 1e6 };
     const child = spawn(binary, [], { shell: false, cwd: directory, stdio: ['pipe','pipe','pipe'] });
     child.stdin.end(String(input).slice(0, 100000));
@@ -34,5 +37,15 @@ async function compileAndRun({ code, input = '', sessionId }) {
   } finally { fs.rmSync(directory, { recursive: true, force: true }); }
 }
 
+async function checkCompiler() {
+  const sessionId = `compiler-check-${Date.now()}`;
+  const version = await capture(spawn('clang++', ['--version'], { shell: false }), 5000, sessionId);
+  if (version.code !== 0) return { supported: false, standard: cppStandard, error: 'clang++ was not found. Install Apple Command Line Tools with xcode-select --install.' };
+  const probe = spawn('clang++', [`-std=${cppStandard}`, '-x', 'c++', '-fsyntax-only', '-'], { shell: false, stdio: ['pipe','pipe','pipe'] });
+  probe.stdin.end('#include <expected>\nint main(){ std::expected<int,int> value=1; return *value-1; }\n');
+  const result = await capture(probe, 10000, `${sessionId}-probe`);
+  return { supported: result.code === 0, standard: cppStandard, version: version.stdout.split('\n')[0], error: result.code === 0 ? '' : `This compiler cannot compile the C++23 feature probe with -std=c++23. ${result.stderr}` };
+}
+
 function cancelRun(sessionId) { const child = running.get(sessionId); if (!child) return false; child.kill('SIGKILL'); return true; }
-module.exports = { compileAndRun, cancelRun };
+module.exports = { compileAndRun, cancelRun, checkCompiler };
