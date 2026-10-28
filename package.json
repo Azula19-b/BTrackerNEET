@@ -13,7 +13,9 @@
     "test": "cross-env ELECTRON_RUN_AS_NODE=1 electron node_modules/vitest/vitest.mjs run",
     "test:watch": "cross-env ELECTRON_RUN_AS_NODE=1 electron node_modules/vitest/vitest.mjs",
     "validate:data": "node scripts/validate-catalog.mjs",
-    "dist": "npm run validate:data && npm run test && npm run build && electron-builder --mac --arm64",
+    "validate:cpp23": "node scripts/validate-cpp23-harnesses.mjs",
+    "verify": "npm run validate:data && npm run test && npm run build",
+    "dist": "npm run validate:data && npm run validate:cpp23 && npm run test && npm run build && electron-builder --mac --arm64",
     "postinstall": "electron-builder install-app-deps"
   },
   "dependencies": {
