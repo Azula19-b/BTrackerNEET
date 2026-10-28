@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import { solutionFor, complexityFor, conceptsFor } from './solution-library.mjs';
+import { buildHarness } from './harness-library.mjs';
 
 const source = JSON.parse(fs.readFileSync(new URL('./neetcode150-source.json', import.meta.url)));
 const verified = JSON.parse(fs.readFileSync(new URL('./verified-content-source.json', import.meta.url)));
@@ -44,7 +45,7 @@ for (const [topic, problems] of Object.entries(source)) {
     const guidance = topicGuidance[topic];
     const facts = verified[`nc150-${String(position).padStart(3, '0')}-${slug(title)}`];
     if (!facts) throw new Error(`Verified content is missing for ${title}`);
-    catalog.push({
+    const record = {
       id: `nc150-${String(position).padStart(3, '0')}-${slug(title)}`,
       position,
       title: facts.title,
@@ -59,12 +60,18 @@ for (const [topic, problems] of Object.entries(source)) {
       hints: facts.hints,
       contract: facts.contract,
       sampleInputs: facts.sampleInputs,
-      solutionCode: solution,
+      solutionCode: `// C++23-compatible reference adapted from the MIT-licensed neetcode-gh/leetcode corpus.\n${facts.solutionCode}`,
       explanation: `${title} is a ${meta.difficulty.toLowerCase()} ${topic} exercise. The key is to represent only the state needed for the next decision. ${guidance[1]} This avoids recomputing earlier work and makes the invariant visible in the code.`,
       walkthrough: `Read the helper and main method from top to bottom. Initialization establishes the base case. Each loop or recursive call advances one valid state, and the return statement converts the maintained state into the required answer. Pay special attention to empty input and boundary indices.`,
       ...complexityFor(title, topic),
       cppConcepts: conceptsFor(topic),
-    });
+    };
+    const harness = buildHarness(record);
+    record.harness = harness.harness;
+    record.localTests = harness.tests;
+    record.harnessStatus = harness.harness ? 'ready' : 'unsupported';
+    record.harnessIssue = harness.unsupportedReason || '';
+    catalog.push(record);
   }
 }
 

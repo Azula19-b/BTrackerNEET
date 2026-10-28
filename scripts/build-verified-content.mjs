@@ -51,8 +51,13 @@ function extractHints(description) {
 }
 
 function methodContract(starter) {
-  const method = starter.match(/(?:public:\s*)?([\w:<>,*&\s]+?)\s+(\w+)\s*\(([^)]*)\)\s*\{/s);
-  return method ? { returnType: method[1].replace(/\s+/g, ' ').trim(), functionName: method[2], parameters: method[3].replace(/\s+/g, ' ').trim() } : { returnType: '', functionName: '', parameters: '' };
+  const cleaned = starter.replace(/\/\*[\s\S]*?\*\//g, '');
+  const classes = [...cleaned.matchAll(/class\s+(\w+)\s*\{/g)];
+  const selected = classes.find(match => match[1] === 'Solution') || classes.at(-1);
+  const className = selected?.[1] || 'Solution';
+  const body = selected ? cleaned.slice(selected.index) : cleaned;
+  const method = body.match(/public:\s*([\w:<>,*&\s]+?)\s+(\w+)\s*\(([^)]*)\)\s*\{/s);
+  return method ? { className, returnType: method[1].replace(/\s+/g, ' ').trim(), functionName: method[2], parameters: method[3].replace(/\s+/g, ' ').trim() } : { className, returnType: '', functionName: '', parameters: '' };
 }
 
 function implementationHint(metadata, contract) {
@@ -91,10 +96,12 @@ for (const problem of catalog) {
     examples,
     constraints,
     starterCode,
+    solutionCode: metadata.solutions.cpp.trim(),
     hints,
     contract,
     sampleInputs: metadata.custom_test_cases || [],
     sourceRevision: 'neetcode-public-metadata-2026-10-28',
+    solutionLicense: 'MIT — https://github.com/neetcode-gh/leetcode',
   };
 }
 

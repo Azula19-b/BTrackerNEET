@@ -1,0 +1,910 @@
+{
+  "generatedAt": "2026-10-28T16:45:00.958Z",
+  "compiler": "clang++ -std=c++23",
+  "summary": {
+    "passed": 140,
+    "unsupported": 10
+  },
+  "results": [
+    {
+      "position": 1,
+      "title": "Contains Duplicate",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|true|true\n__BT_CASE__|2|PASS|false|false\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 2,
+      "title": "Valid Anagram",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|true|true\n__BT_CASE__|2|PASS|false|false\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 3,
+      "title": "Two Sum",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|[0,1]|[0,1]\n__BT_CASE__|2|PASS|[0,2]|[0,2]\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 4,
+      "title": "Group Anagrams",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|[[\"act\",\"cat\"],[\"hat\"],[\"pots\",\"stop\",\"tops\"]]|[[\"act\",\"cat\"],[\"hat\"],[\"pots\",\"stop\",\"tops\"]]\n__BT_CASE__|2|PASS|[[\"x\"]]|[[\"x\"]]\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 5,
+      "title": "Top K Frequent Elements",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|[2,3]|[2,3]\n__BT_CASE__|2|PASS|[7]|[7]\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 6,
+      "title": "Encode and Decode Strings",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|[\"Hello\",\"World\"]|[\"Hello\",\"World\"]\n__BT_CASE__|2|PASS|[\"\"]|[\"\"]\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 7,
+      "title": "Products of Array Except Self",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|[48,24,12,8]|[48,24,12,8]\n__BT_CASE__|2|PASS|[0,-6,0,0,0]|[0,-6,0,0,0]\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 8,
+      "title": "Valid Sudoku",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|true|true\n__BT_CASE__|2|PASS|false|false\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 9,
+      "title": "Longest Consecutive Sequence",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|4|4\n__BT_CASE__|2|PASS|7|7\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 10,
+      "title": "Valid Palindrome",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|true|true\n__BT_CASE__|2|PASS|false|false\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 11,
+      "title": "Two Integer Sum II",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|[1,2]|[1,2]\n__BT_SUMMARY__|1|1"
+    },
+    {
+      "position": 12,
+      "title": "3Sum",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|[[-1,-1,2],[-1,0,1]]|[[-1,-1,2],[-1,0,1]]\n__BT_CASE__|2|PASS|[]|[]\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 13,
+      "title": "Container With Most Water",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|36|36\n__BT_CASE__|2|PASS|4|4\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 14,
+      "title": "Trapping Rain Water",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|9|9\n__BT_SUMMARY__|1|1"
+    },
+    {
+      "position": 15,
+      "title": "Best Time to Buy and Sell Stock",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|5|5\n__BT_CASE__|2|PASS|0|0\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 16,
+      "title": "Longest Substring Without Repeating Characters",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|3|3\n__BT_CASE__|2|PASS|1|1\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 17,
+      "title": "Longest Repeating Character Replacement",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|4|4\n__BT_CASE__|2|PASS|5|5\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 18,
+      "title": "Permutation in String",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|true|true\n__BT_CASE__|2|PASS|false|false\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 19,
+      "title": "Minimum Window Substring",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|\"YXAZ\"|\"YXAZ\"\n__BT_CASE__|2|PASS|\"xyz\"|\"xyz\"\n__BT_CASE__|3|PASS|\"\"|\"\"\n__BT_SUMMARY__|3|3"
+    },
+    {
+      "position": 20,
+      "title": "Sliding Window Maximum",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|[2,2,4,4,6]|[2,2,4,4,6]\n__BT_SUMMARY__|1|1"
+    },
+    {
+      "position": 21,
+      "title": "Valid Parentheses",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|true|true\n__BT_CASE__|2|PASS|true|true\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 22,
+      "title": "Min Stack",
+      "status": "unsupported",
+      "detail": "Stateful design harness requires an operation-sequence adapter."
+    },
+    {
+      "position": 23,
+      "title": "Evaluate Reverse Polish Notation",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|9|9\n__BT_SUMMARY__|1|1"
+    },
+    {
+      "position": 24,
+      "title": "Daily Temperatures",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|[1,4,1,2,1,0,0]|[1,4,1,2,1,0,0]\n__BT_CASE__|2|PASS|[0,0,0]|[0,0,0]\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 25,
+      "title": "Car Fleet",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|1|1\n__BT_CASE__|2|PASS|3|3\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 26,
+      "title": "Largest Rectangle In Histogram",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|8|8\n__BT_CASE__|2|PASS|7|7\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 27,
+      "title": "Binary Search",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|3|3\n__BT_CASE__|2|PASS|-1|-1\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 28,
+      "title": "Search a 2D Matrix",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|true|true\n__BT_CASE__|2|PASS|false|false\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 29,
+      "title": "Koko Eating Bananas",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|2|2\n__BT_CASE__|2|PASS|25|25\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 30,
+      "title": "Find Minimum in Rotated Sorted Array",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|1|1\n__BT_CASE__|2|PASS|0|0\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 31,
+      "title": "Search in Rotated Sorted Array",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|4|4\n__BT_CASE__|2|PASS|-1|-1\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 32,
+      "title": "Time Based Key-Value Store",
+      "status": "unsupported",
+      "detail": "Stateful design harness requires an operation-sequence adapter."
+    },
+    {
+      "position": 33,
+      "title": "Median of Two Sorted Arrays",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|2|2\n__BT_CASE__|2|PASS|2.5|2.5\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 34,
+      "title": "Reverse Linked List",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|[3,2,1,0]|[3,2,1,0]\n__BT_CASE__|2|PASS|[]|[]\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 35,
+      "title": "Merge Two Sorted Linked Lists",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|[1,1,2,3,4,5]|[1,1,2,3,4,5]\n__BT_CASE__|2|PASS|[1,2]|[1,2]\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 36,
+      "title": "Linked List Cycle Detection",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|true|true\n__BT_CASE__|2|PASS|false|false\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 37,
+      "title": "Reorder Linked List",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|[2,8,4,6]|[2,8,4,6]\n__BT_CASE__|2|PASS|[2,10,4,8,6]|[2,10,4,8,6]\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 38,
+      "title": "Remove Nth Node From End of List",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|[1,2,4]|[1,2,4]\n__BT_CASE__|2|PASS|[]|[]\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 39,
+      "title": "Copy Linked List with Random Pointer",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|[[3,null],[7,3],[4,0],[5,1]]|[[3,null],[7,3],[4,0],[5,1]]\n__BT_CASE__|2|PASS|[[1,null],[2,2],[3,2]]|[[1,null],[2,2],[3,2]]\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 40,
+      "title": "Add Two Numbers",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|[5,7,9]|[5,7,9]\n__BT_CASE__|2|PASS|[8,1]|[8,1]\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 41,
+      "title": "Find the Duplicate Number",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|2|2\n__BT_CASE__|2|PASS|4|4\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 42,
+      "title": "LRU Cache",
+      "status": "unsupported",
+      "detail": "Stateful design harness requires an operation-sequence adapter."
+    },
+    {
+      "position": 43,
+      "title": "Merge K Sorted Linked Lists",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|[1,1,2,3,3,4,5,6]|[1,1,2,3,3,4,5,6]\n__BT_CASE__|2|PASS|[]|[]\n__BT_CASE__|3|PASS|[]|[]\n__BT_SUMMARY__|3|3"
+    },
+    {
+      "position": 44,
+      "title": "Reverse Nodes in K-Group",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|[3,2,1,6,5,4]|[3,2,1,6,5,4]\n__BT_CASE__|2|PASS|[3,2,1,4,5]|[3,2,1,4,5]\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 45,
+      "title": "Invert Binary Tree",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|[4,7,2,9,6,3,1]|[4,7,2,9,6,3,1]\n__BT_CASE__|2|PASS|[2,3,1]|[2,3,1]\n__BT_CASE__|3|PASS|[]|[]\n__BT_SUMMARY__|3|3"
+    },
+    {
+      "position": 46,
+      "title": "Maximum Depth of Binary Tree",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|3|3\n__BT_CASE__|2|PASS|0|0\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 47,
+      "title": "Diameter of Binary Tree",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|3|3\n__BT_CASE__|2|PASS|2|2\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 48,
+      "title": "Balanced Binary Tree",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|true|true\n__BT_CASE__|2|PASS|false|false\n__BT_CASE__|3|PASS|true|true\n__BT_SUMMARY__|3|3"
+    },
+    {
+      "position": 49,
+      "title": "Same Binary Tree",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|true|true\n__BT_CASE__|2|PASS|false|false\n__BT_CASE__|3|PASS|false|false\n__BT_SUMMARY__|3|3"
+    },
+    {
+      "position": 50,
+      "title": "Subtree of Another Tree",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|true|true\n__BT_CASE__|2|PASS|false|false\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 51,
+      "title": "Lowest Common Ancestor in Binary Search Tree",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|5|5\n__BT_CASE__|2|PASS|3|3\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 52,
+      "title": "Binary Tree Level Order Traversal",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|[[1],[2,3],[4,5,6,7]]|[[1],[2,3],[4,5,6,7]]\n__BT_CASE__|2|PASS|[[1]]|[[1]]\n__BT_CASE__|3|PASS|[]|[]\n__BT_SUMMARY__|3|3"
+    },
+    {
+      "position": 53,
+      "title": "Binary Tree Right Side View",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|[1,3,5]|[1,3,5]\n__BT_CASE__|2|PASS|[1,3,4,5]|[1,3,4,5]\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 54,
+      "title": "Count Good Nodes in Binary Tree",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|3|3\n__BT_CASE__|2|PASS|3|3\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 55,
+      "title": "Valid Binary Search Tree",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|true|true\n__BT_CASE__|2|PASS|false|false\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 56,
+      "title": "Kth Smallest Integer in BST",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|1|1\n__BT_CASE__|2|PASS|5|5\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 57,
+      "title": "Construct Binary Tree from Preorder and Inorder Traversal",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|[1,2,3,null,null,null,4]|[1,2,3,null,null,null,4]\n__BT_CASE__|2|PASS|[1]|[1]\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 58,
+      "title": "Binary Tree Maximum Path Sum",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|6|6\n__BT_CASE__|2|PASS|40|40\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 59,
+      "title": "Serialize and Deserialize Binary Tree",
+      "status": "unsupported",
+      "detail": "Stateful design harness requires an operation-sequence adapter."
+    },
+    {
+      "position": 60,
+      "title": "Kth Largest Element in a Stream",
+      "status": "unsupported",
+      "detail": "Stateful design harness requires an operation-sequence adapter."
+    },
+    {
+      "position": 61,
+      "title": "Last Stone Weight",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|1|1\n__BT_CASE__|2|PASS|1|1\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 62,
+      "title": "K Closest Points to Origin",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|[[0,2]]|[[0,2]]\n__BT_CASE__|2|PASS|[[0,2],[2,0]]|[[0,2],[2,0]]\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 63,
+      "title": "Kth Largest Element in an Array",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|4|4\n__BT_CASE__|2|PASS|4|4\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 64,
+      "title": "Task Scheduler",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|5|5\n__BT_CASE__|2|PASS|9|9\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 65,
+      "title": "Design Twitter",
+      "status": "unsupported",
+      "detail": "Stateful design harness requires an operation-sequence adapter."
+    },
+    {
+      "position": 66,
+      "title": "Find Median From Data Stream",
+      "status": "unsupported",
+      "detail": "Stateful design harness requires an operation-sequence adapter."
+    },
+    {
+      "position": 67,
+      "title": "Subsets",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|[[],[1],[1,2],[1,2,3],[1,3],[2],[2,3],[3]]|[[],[1],[1,2],[1,2,3],[1,3],[2],[2,3],[3]]\n__BT_CASE__|2|PASS|[[],[7]]|[[],[7]]\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 68,
+      "title": "Combination Sum",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|[[2,2,5],[9]]|[[2,2,5],[9]]\n__BT_CASE__|2|PASS|[[3,3,3,3,4],[3,3,5,5],[3,4,4,5],[4,4,4,4]]|[[3,3,3,3,4],[3,3,5,5],[3,4,4,5],[4,4,4,4]]\n__BT_CASE__|3|PASS|[]|[]\n__BT_SUMMARY__|3|3"
+    },
+    {
+      "position": 69,
+      "title": "Combination Sum II",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|[[1,2,5],[2,2,4],[2,6]]|[[1,2,5],[2,2,4],[2,6]]\n__BT_CASE__|2|PASS|[[1,2,4],[2,5],[3,4]]|[[1,2,4],[2,5],[3,4]]\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 70,
+      "title": "Permutations",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|[[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]|[[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]\n__BT_CASE__|2|PASS|[[7]]|[[7]]\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 71,
+      "title": "Subsets II",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|[[],[1],[1,1],[1,1,2],[1,2],[2]]|[[],[1],[1,1],[1,1,2],[1,2],[2]]\n__BT_CASE__|2|PASS|[[],[7],[7,7]]|[[],[7],[7,7]]\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 72,
+      "title": "Generate Parentheses",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|[\"()\"]|[\"()\"]\n__BT_CASE__|2|PASS|[\"((()))\",\"(()())\",\"(())()\",\"()(())\",\"()()()\"]|[\"((()))\",\"(()())\",\"(())()\",\"()(())\",\"()()()\"]\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 73,
+      "title": "Word Search",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|true|true\n__BT_CASE__|2|PASS|false|false\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 74,
+      "title": "Palindrome Partitioning",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|[[\"a\",\"a\",\"b\"],[\"aa\",\"b\"]]|[[\"a\",\"a\",\"b\"],[\"aa\",\"b\"]]\n__BT_CASE__|2|PASS|[[\"a\"]]|[[\"a\"]]\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 75,
+      "title": "Letter Combinations of a Phone Number",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|[\"dg\",\"dh\",\"di\",\"eg\",\"eh\",\"ei\",\"fg\",\"fh\",\"fi\"]|[\"dg\",\"dh\",\"di\",\"eg\",\"eh\",\"ei\",\"fg\",\"fh\",\"fi\"]\n__BT_CASE__|2|PASS|[]|[]\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 76,
+      "title": "N-Queens",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|[[\"..Q.\",\"Q...\",\"...Q\",\".Q..\"],[\".Q..\",\"...Q\",\"Q...\",\"..Q.\"]]|[[\"..Q.\",\"Q...\",\"...Q\",\".Q..\"],[\".Q..\",\"...Q\",\"Q...\",\"..Q.\"]]\n__BT_CASE__|2|PASS|[[\"Q\"]]|[[\"Q\"]]\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 77,
+      "title": "Implement Trie (Prefix Tree)",
+      "status": "unsupported",
+      "detail": "Stateful design harness requires an operation-sequence adapter."
+    },
+    {
+      "position": 78,
+      "title": "Design Add and Search Word Data Structure",
+      "status": "unsupported",
+      "detail": "Stateful design harness requires an operation-sequence adapter."
+    },
+    {
+      "position": 79,
+      "title": "Word Search II",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|[\"back\",\"backend\",\"cat\"]|[\"back\",\"backend\",\"cat\"]\n__BT_CASE__|2|PASS|[]|[]\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 80,
+      "title": "Number of Islands",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|1|1\n__BT_CASE__|2|PASS|4|4\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 81,
+      "title": "Max Area of Island",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|6|6\n__BT_SUMMARY__|1|1"
+    },
+    {
+      "position": 82,
+      "title": "Clone Graph",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|[[2],[1,3],[2]]|[[2],[1,3],[2]]\n__BT_CASE__|2|PASS|[[]]|[[]]\n__BT_CASE__|3|PASS|[]|[]\n__BT_SUMMARY__|3|3"
+    },
+    {
+      "position": 83,
+      "title": "Islands and Treasure",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|[[3,-1,0,1],[2,2,1,-1],[1,-1,2,-1],[0,-1,3,4]]|[[3,-1,0,1],[2,2,1,-1],[1,-1,2,-1],[0,-1,3,4]]\n__BT_CASE__|2|PASS|[[0,-1],[1,2]]|[[0,-1],[1,2]]\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 84,
+      "title": "Rotting Fruit",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|4|4\n__BT_CASE__|2|PASS|-1|-1\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 85,
+      "title": "Pacific Atlantic Water Flow",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|[[0,2],[0,4],[1,0],[1,1],[1,2],[1,3],[1,4],[2,0]]|[[0,2],[0,4],[1,0],[1,1],[1,2],[1,3],[1,4],[2,0]]\n__BT_CASE__|2|PASS|[[0,0],[1,0]]|[[0,0],[1,0]]\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 86,
+      "title": "Surrounded Regions",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|[[X,X,X,X],[X,X,X,X],[X,X,X,X],[X,O,X,X]]|[[X,X,X,X],[X,X,X,X],[X,X,X,X],[X,O,X,X]]\n__BT_CASE__|2|PASS|[[X]]|[[X]]\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 87,
+      "title": "Course Schedule",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|true|true\n__BT_CASE__|2|PASS|false|false\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 88,
+      "title": "Course Schedule II",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|[0,1,2]|[0,1,2]\n__BT_CASE__|2|PASS|[]|[]\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 89,
+      "title": "Graph Valid Tree",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|true|true\n__BT_CASE__|2|PASS|false|false\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 90,
+      "title": "Number of Connected Components in an Undirected Graph",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|2|2\n__BT_CASE__|2|PASS|1|1\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 91,
+      "title": "Redundant Connection",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|[2,4]|[2,4]\n__BT_CASE__|2|PASS|[3,4]|[3,4]\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 92,
+      "title": "Word Ladder",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|4|4\n__BT_CASE__|2|PASS|0|0\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 93,
+      "title": "Network Delay Time",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|3|3\n__BT_CASE__|2|PASS|-1|-1\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 94,
+      "title": "Reconstruct Flight Path",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|[\"JFK\",\"BUF\",\"HOU\",\"SEA\"]|[\"JFK\",\"BUF\",\"HOU\",\"SEA\"]\n__BT_CASE__|2|PASS|[\"JFK\",\"HOU\",\"JFK\",\"SEA\",\"JFK\"]|[\"JFK\",\"HOU\",\"JFK\",\"SEA\",\"JFK\"]\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 95,
+      "title": "Min Cost to Connect Points",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|10|10\n__BT_SUMMARY__|1|1"
+    },
+    {
+      "position": 96,
+      "title": "Swim in Rising Water",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|3|3\n__BT_CASE__|2|PASS|8|8\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 97,
+      "title": "Alien Dictionary",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|\"zo\"|\"zo\"\n__BT_CASE__|2|PASS|\"hernf\"|\"hernf\"\n__BT_CASE__|3|PASS|\"\"|\"\"\n__BT_SUMMARY__|3|3"
+    },
+    {
+      "position": 98,
+      "title": "Cheapest Flights Within K Stops",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|500|500\n__BT_CASE__|2|PASS|200|200\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 99,
+      "title": "Climbing Stairs",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|2|2\n__BT_CASE__|2|PASS|3|3\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 100,
+      "title": "Min Cost Climbing Stairs",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|2|2\n__BT_CASE__|2|PASS|4|4\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 101,
+      "title": "House Robber",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|4|4\n__BT_CASE__|2|PASS|16|16\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 102,
+      "title": "House Robber II",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|4|4\n__BT_CASE__|2|PASS|15|15\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 103,
+      "title": "Longest Palindromic Substring",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|\"aba\"|\"bab\"\n__BT_CASE__|2|PASS|\"bb\"|\"bb\"\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 104,
+      "title": "Palindromic Substrings",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|3|3\n__BT_CASE__|2|PASS|6|6\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 105,
+      "title": "Decode Ways",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|2|2\n__BT_CASE__|2|PASS|3|3\n__BT_CASE__|3|PASS|0|0\n__BT_SUMMARY__|3|3"
+    },
+    {
+      "position": 106,
+      "title": "Coin Change",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|3|3\n__BT_CASE__|2|PASS|-1|-1\n__BT_CASE__|3|PASS|0|0\n__BT_SUMMARY__|3|3"
+    },
+    {
+      "position": 107,
+      "title": "Maximum Product Subarray",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|8|8\n__BT_CASE__|2|PASS|0|0\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 108,
+      "title": "Word Break",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|true|true\n__BT_CASE__|2|PASS|true|true\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 109,
+      "title": "Longest Increasing Subsequence",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|4|4\n__BT_CASE__|2|PASS|4|4\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 110,
+      "title": "Partition Equal Subset Sum",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|true|true\n__BT_CASE__|2|PASS|false|false\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 111,
+      "title": "Unique Paths",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|21|21\n__BT_CASE__|2|PASS|6|6\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 112,
+      "title": "Longest Common Subsequence",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|3|3\n__BT_CASE__|2|PASS|4|4\n__BT_CASE__|3|PASS|0|0\n__BT_SUMMARY__|3|3"
+    },
+    {
+      "position": 113,
+      "title": "Best Time to Buy and Sell Stock with Cooldown",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|6|6\n__BT_CASE__|2|PASS|0|0\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 114,
+      "title": "Coin Change II",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|4|4\n__BT_CASE__|2|PASS|0|0\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 115,
+      "title": "Target Sum",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|0|0\n__BT_SUMMARY__|1|1"
+    },
+    {
+      "position": 116,
+      "title": "Interleaving String",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|true|true\n__BT_CASE__|2|PASS|true|true\n__BT_CASE__|3|PASS|false|false\n__BT_SUMMARY__|3|3"
+    },
+    {
+      "position": 117,
+      "title": "Longest Increasing Path in Matrix",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|4|4\n__BT_CASE__|2|PASS|7|7\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 118,
+      "title": "Distinct Subsequences",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|3|3\n__BT_CASE__|2|PASS|5|5\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 119,
+      "title": "Edit Distance",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|2|2\n__BT_CASE__|2|PASS|3|3\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 120,
+      "title": "Burst Balloons",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|143|143\n__BT_SUMMARY__|1|1"
+    },
+    {
+      "position": 121,
+      "title": "Regular Expression Matching",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|false|false\n__BT_CASE__|2|PASS|true|true\n__BT_CASE__|3|PASS|true|true\n__BT_SUMMARY__|3|3"
+    },
+    {
+      "position": 122,
+      "title": "Maximum Subarray",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|8|8\n__BT_CASE__|2|PASS|-1|-1\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 123,
+      "title": "Jump Game",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|true|true\n__BT_CASE__|2|PASS|false|false\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 124,
+      "title": "Jump Game II",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|2|2\n__BT_CASE__|2|PASS|2|2\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 125,
+      "title": "Gas Station",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|3|3\n__BT_CASE__|2|PASS|-1|-1\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 126,
+      "title": "Hand of Straights",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|true|true\n__BT_CASE__|2|PASS|false|false\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 127,
+      "title": "Merge Triplets to Form Target",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|true|true\n__BT_CASE__|2|PASS|false|false\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 128,
+      "title": "Partition Labels",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|[5,5,1,1,1]|[5,5,1,1,1]\n__BT_CASE__|2|PASS|[6]|[6]\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 129,
+      "title": "Valid Parenthesis String",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|true|true\n__BT_CASE__|2|PASS|false|false\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 130,
+      "title": "Insert Interval",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|[[1,6]]|[[1,6]]\n__BT_CASE__|2|PASS|[[1,2],[3,5],[6,7],[9,10]]|[[1,2],[3,5],[6,7],[9,10]]\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 131,
+      "title": "Merge Intervals",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|[[1,5],[6,7]]|[[1,5],[6,7]]\n__BT_CASE__|2|PASS|[[1,3]]|[[1,3]]\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 132,
+      "title": "Non-overlapping Intervals",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|1|1\n__BT_CASE__|2|PASS|0|0\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 133,
+      "title": "Meeting Rooms",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|false|false\n__BT_CASE__|2|PASS|true|true\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 134,
+      "title": "Meeting Rooms II",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|2|2\n__BT_CASE__|2|PASS|1|1\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 135,
+      "title": "Minimum Interval to Include Each Query",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|[2,2,3,5,1,-1]|[2,2,3,5,1,-1]\n__BT_SUMMARY__|1|1"
+    },
+    {
+      "position": 136,
+      "title": "Rotate Image",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|[[3,1],[4,2]]|[[3,1],[4,2]]\n__BT_CASE__|2|PASS|[[7,4,1],[8,5,2],[9,6,3]]|[[7,4,1],[8,5,2],[9,6,3]]\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 137,
+      "title": "Spiral Matrix",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|[1,2,4,3]|[1,2,4,3]\n__BT_CASE__|2|PASS|[1,2,3,6,9,8,7,4,5]|[1,2,3,6,9,8,7,4,5]\n__BT_CASE__|3|PASS|[1,2,3,4,8,12,11,10,9,5,6,7]|[1,2,3,4,8,12,11,10,9,5,6,7]\n__BT_SUMMARY__|3|3"
+    },
+    {
+      "position": 138,
+      "title": "Set Matrix Zeroes",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|[[0,0],[0,0]]|[[0,0],[0,0]]\n__BT_CASE__|2|PASS|[[1,0,3],[0,0,0],[6,0,8]]|[[1,0,3],[0,0,0],[6,0,8]]\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 139,
+      "title": "Non-Cyclical Number",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|true|true\n__BT_CASE__|2|PASS|false|false\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 140,
+      "title": "Plus One",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|[1,2,3,5]|[1,2,3,5]\n__BT_CASE__|2|PASS|[1,0,0,0]|[1,0,0,0]\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 141,
+      "title": "Pow(x, n)",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|32|32\n__BT_CASE__|2|PASS|2.59374|2.59374\n__BT_CASE__|3|PASS|0.125|0.125\n__BT_SUMMARY__|3|3"
+    },
+    {
+      "position": 142,
+      "title": "Multiply Strings",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|\"12\"|\"12\"\n__BT_CASE__|2|PASS|\"24642\"|\"24642\"\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 143,
+      "title": "Detect Squares",
+      "status": "unsupported",
+      "detail": "Stateful design harness requires an operation-sequence adapter."
+    },
+    {
+      "position": 144,
+      "title": "Single Number",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|2|2\n__BT_CASE__|2|PASS|8|8\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 145,
+      "title": "Number of 1 Bits",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|3|3\n__BT_CASE__|2|PASS|30|30\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 146,
+      "title": "Counting Bits",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|[0,1,1,2,1]|[0,1,1,2,1]\n__BT_SUMMARY__|1|1"
+    },
+    {
+      "position": 147,
+      "title": "Reverse Bits",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|2818572288|2818572288\n__BT_SUMMARY__|1|1"
+    },
+    {
+      "position": 148,
+      "title": "Missing Number",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|0|0\n__BT_CASE__|2|PASS|1|1\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 149,
+      "title": "Sum of Two Integers",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|2|2\n__BT_CASE__|2|PASS|11|11\n__BT_SUMMARY__|2|2"
+    },
+    {
+      "position": 150,
+      "title": "Reverse Integer",
+      "status": "passed",
+      "detail": "__BT_CASE__|1|PASS|4321|4321\n__BT_CASE__|2|PASS|-4321|-4321\n__BT_CASE__|3|PASS|0|0\n__BT_SUMMARY__|3|3"
+    }
+  ]
+}
