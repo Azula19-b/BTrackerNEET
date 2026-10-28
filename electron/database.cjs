@@ -14,15 +14,16 @@ function ensure(value, allowed, label) {
 }
 
 function createDatabase(filename, catalog = []) {
+  const existed = filename !== ':memory:' && fs.existsSync(filename);
   const db = new Database(filename);
   db.pragma('journal_mode = WAL');
   db.pragma('foreign_keys = ON');
-  migrate(db);
+  migrate(db, existed);
   if (catalog.length) seedCatalog(db, catalog);
   return makeRepository(db);
 }
 
-function migrate(db) {
+function migrate(db, createBackup = false) {
   db.exec(`
     CREATE TABLE IF NOT EXISTS schema_migrations (
       version INTEGER PRIMARY KEY, applied_at TEXT NOT NULL
@@ -103,27 +104,54 @@ function migrate(db) {
     );
     INSERT OR IGNORE INTO schema_migrations(version, applied_at) VALUES (1, datetime('now'));
   `);
+  const version = db.prepare('SELECT MAX(version) AS version FROM schema_migrations').get().version || 1;
+  if (version < 2) {
+    if (createBackup && db.name && db.name !== ':memory:') {
+      const backup = `${db.name}.pre-v2-${new Date().toISOString().replace(/[:.]/g, '-')}.bak`;
+      db.prepare('VACUUM INTO ?').run(backup);
+    }
+    const columns = new Set(db.prepare('PRAGMA table_info(problems)').all().map(column => column.name));
+    const additions = [
+      ['constraints', "TEXT NOT NULL DEFAULT '[]'"],
+      ['contract', "TEXT NOT NULL DEFAULT '{}'"],
+      ['sample_inputs', "TEXT NOT NULL DEFAULT '[]'"],
+      ['harness', "TEXT NOT NULL DEFAULT ''"],
+      ['local_tests', "TEXT NOT NULL DEFAULT '[]'"],
+    ];
+    const apply = db.transaction(() => {
+      for (const [name, definition] of additions) if (!columns.has(name)) db.exec(`ALTER TABLE problems ADD COLUMN ${name} ${definition}`);
+      db.prepare('INSERT INTO schema_migrations(version,applied_at) VALUES (2,?)').run(now());
+    });
+    apply();
+  }
 }
 
 function seedCatalog(db, catalog) {
   const insert = db.prepare(`INSERT INTO problems (
-    id,source,position,title,url,neetcode_url,topic,difficulty,summary,examples,starter_code,
+    id,source,position,title,url,neetcode_url,topic,difficulty,summary,examples,constraints,starter_code,
     solution_code,hints,explanation,walkthrough,time_complexity,space_complexity,cpp_concepts,
-    created_at,updated_at
-  ) VALUES (@id,'builtin',@position,@title,@url,@neetcodeUrl,@topic,@difficulty,@summary,@examples,@starterCode,
-    @solutionCode,@hints,@explanation,@walkthrough,@timeComplexity,@spaceComplexity,@cppConcepts,@timestamp,@timestamp)
+    contract,sample_inputs,harness,local_tests,created_at,updated_at
+  ) VALUES (@id,'builtin',@position,@title,@url,@neetcodeUrl,@topic,@difficulty,@summary,@examples,@constraints,@starterCode,
+    @solutionCode,@hints,@explanation,@walkthrough,@timeComplexity,@spaceComplexity,@cppConcepts,
+    @contract,@sample_inputs,@harness,@local_tests,@timestamp,@timestamp)
   ON CONFLICT(id) DO UPDATE SET
     position=excluded.position,title=excluded.title,url=excluded.url,neetcode_url=excluded.neetcode_url,
-    topic=excluded.topic,difficulty=excluded.difficulty,summary=excluded.summary,examples=excluded.examples,
+    topic=excluded.topic,difficulty=excluded.difficulty,summary=excluded.summary,examples=excluded.examples,constraints=excluded.constraints,
     starter_code=excluded.starter_code,solution_code=excluded.solution_code,hints=excluded.hints,
     explanation=excluded.explanation,walkthrough=excluded.walkthrough,time_complexity=excluded.time_complexity,
-    space_complexity=excluded.space_complexity,cpp_concepts=excluded.cpp_concepts,updated_at=excluded.updated_at`);
+    space_complexity=excluded.space_complexity,cpp_concepts=excluded.cpp_concepts,contract=excluded.contract,
+    sample_inputs=excluded.sample_inputs,harness=excluded.harness,local_tests=excluded.local_tests,updated_at=excluded.updated_at`);
   const seed = db.transaction(() => {
     for (const item of catalog) insert.run({
       ...item,
       examples: JSON.stringify(item.examples),
+      constraints: JSON.stringify(item.constraints || []),
       hints: JSON.stringify(item.hints),
       cppConcepts: JSON.stringify(item.cppConcepts),
+      contract: JSON.stringify(item.contract || {}),
+      sample_inputs: JSON.stringify(item.sampleInputs || []),
+      harness: item.harness || '',
+      local_tests: JSON.stringify(item.localTests || []),
       timestamp: now(),
     });
     db.prepare(`INSERT OR IGNORE INTO user_progress(problem_id,updated_at)
@@ -137,8 +165,12 @@ function hydrate(row) {
   return {
     ...row,
     examples: JSON.parse(row.examples || '[]'),
+    constraints: JSON.parse(row.constraints || '[]'),
     hints: JSON.parse(row.hints || '[]'),
     cpp_concepts: JSON.parse(row.cpp_concepts || '[]'),
+    contract: JSON.parse(row.contract || '{}'),
+    sample_inputs: JSON.parse(row.sample_inputs || '[]'),
+    local_tests: JSON.parse(row.local_tests || '[]'),
     solution_viewed: Boolean(row.solution_viewed),
   };
 }
