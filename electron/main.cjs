@@ -2,7 +2,7 @@ const { app, BrowserWindow, shell, ipcMain, dialog } = require('electron');
 const path = require('node:path');
 const fs = require('node:fs');
 const { createDatabase, loadCatalog } = require('./database.cjs');
-const { compileAndRun, cancelRun, checkCompiler } = require('./runner.cjs');
+const { compileAndRun, runProblemTests, cancelRun, checkCompiler } = require('./runner.cjs');
 
 let mainWindow;
 let repository;
@@ -27,6 +27,11 @@ const handlers = {
   'reviews:complete': (_, problemId, input) => repository.completeReview(problemId, input),
   'analytics:get': () => repository.getAnalytics(),
   'runner:execute': (_, input) => compileAndRun(input),
+  'runner:problem': (_, input) => {
+    const problem = repository.getProblem(input.problemId);
+    if (!problem) throw new Error('Problem not found');
+    return runProblemTests({ code: input.code, sessionId: input.sessionId, mode: input.mode, harness: problem.harness });
+  },
   'runner:cancel': (_, sessionId) => cancelRun(sessionId),
   'runner:check': () => checkCompiler(),
   'backup:export': async () => {

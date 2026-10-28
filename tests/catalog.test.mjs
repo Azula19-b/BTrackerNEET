@@ -21,10 +21,27 @@ describe('built-in NeetCode 150 catalog', () => {
       expect(problem.hints).toHaveLength(3);
       expect(new Set(problem.hints).size).toBe(3);
       expect(problem.summary.length).toBeGreaterThan(60);
-      expect(problem.solutionCode).toContain('#include');
+      expect(problem.solutionCode).toContain('class');
       expect(problem.explanation.length).toBeGreaterThan(80);
       expect(problem.starterCode).toContain('class');
       expect(problem.cppConcepts.length).toBeGreaterThan(2);
+      expect(problem.constraints.length).toBeGreaterThan(0);
+      expect(problem.examples.length).toBeGreaterThan(0);
+      expect(problem.harnessStatus).toBe('ready');
+      expect(problem.harness).toContain('{{USER_CODE}}');
+      expect(problem.localTests.length).toBeGreaterThan(0);
     }
+  });
+
+  it('uses the required Contains Duplicate contract and examples', () => {
+    const problem = catalog[0];
+    expect(problem.title).toBe('Contains Duplicate');
+    expect(problem.difficulty).toBe('Easy');
+    expect(problem.topic).toBe('Arrays & Hashing');
+    expect(problem.starterCode).toContain('bool hasDuplicate(vector<int>& nums)');
+    expect(problem.examples).toEqual(expect.arrayContaining([
+      expect.objectContaining({ input: 'nums = [1, 2, 3, 3]', output: 'true' }),
+      expect.objectContaining({ input: 'nums = [1, 2, 3, 4]', output: 'false' }),
+    ]));
   });
 });

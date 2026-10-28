@@ -37,6 +37,29 @@ async function compileAndRun({ code, input = '', sessionId }) {
   } finally { fs.rmSync(directory, { recursive: true, force: true }); }
 }
 
+function parseTestOutput(stdout) {
+  const cases = [];
+  let passed = 0, total = 0;
+  for (const line of stdout.split(/\r?\n/)) {
+    const match = line.match(/^__BT_CASE__\|(\d+)\|(PASS|FAIL)\|(.*)\|(.*)$/);
+    if (match) cases.push({ number: Number(match[1]), passed: match[2] === 'PASS', actual: match[3], expected: match[4] });
+    const summary = line.match(/^__BT_SUMMARY__\|(\d+)\|(\d+)$/);
+    if (summary) { passed = Number(summary[1]); total = Number(summary[2]); }
+  }
+  return { cases, passed, total, allPassed: total > 0 && passed === total };
+}
+
+async function runProblemTests({ code, harness, sessionId, mode = 'run' }) {
+  if (typeof harness !== 'string' || !harness.includes('{{USER_CODE}}')) {
+    return { phase: 'validation', code: 1, stdout: '', stderr: 'This problem does not have a verified local C++23 test harness.' };
+  }
+  if (/\bint\s+main\s*\(/.test(code)) {
+    return { phase: 'validation', code: 1, stdout: '', stderr: 'Problem tests expect the provided class or method signature, without a standalone main(). Reset to the starter code and implement that signature.' };
+  }
+  const result = await compileAndRun({ code: harness.replace('{{USER_CODE}}', code), sessionId });
+  return { ...result, mode, testResults: parseTestOutput(result.stdout || '') };
+}
+
 async function checkCompiler() {
   const sessionId = `compiler-check-${Date.now()}`;
   const version = await capture(spawn('clang++', ['--version'], { shell: false }), 5000, sessionId);
@@ -48,4 +71,4 @@ async function checkCompiler() {
 }
 
 function cancelRun(sessionId) { const child = running.get(sessionId); if (!child) return false; child.kill('SIGKILL'); return true; }
-module.exports = { compileAndRun, cancelRun, checkCompiler };
+module.exports = { compileAndRun, runProblemTests, cancelRun, checkCompiler, parseTestOutput };
