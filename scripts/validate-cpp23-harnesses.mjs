@@ -36,7 +36,7 @@ for (let index = 0; index < targets.length; index += 4) {
 }
 process.stdout.write('\n');
 const summary = results.reduce((all, result) => ({ ...all, [result.status]: (all[result.status] || 0) + 1 }), {});
-const report = { generatedAt: new Date().toISOString(), compiler: 'clang++ -std=c++23', summary, results };
+const report = { compiler: 'clang++ -std=c++23', summary, results };
 await fs.writeFile(new URL('../data/cpp23-validation-report.json', import.meta.url), `${JSON.stringify(report, null, 2)}\n`);
 await fs.rm(root, { recursive: true, force: true });
 console.log(JSON.stringify(summary));
